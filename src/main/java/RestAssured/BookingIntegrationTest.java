@@ -25,7 +25,7 @@ public class BookingIntegrationTest {
         String token = authResponse.jsonPath().getString("token");
         System.out.println("✅ Token: " + token);
 
-        // 2. Create Booking
+        // 2. Create Booking - defining the payload.  .
         String createPayload = "{\n" +
                 "  \"firstname\": \"Ujjwal\",\n" +
                 "  \"lastname\": \"Kumar\",\n" +
