@@ -11,7 +11,7 @@ public class BookingIntegrationTest {
 
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
 
-        // 1. Generate Token
+        // 1. This block of code , generate the token .......
         String authPayload = "{\n" +
                 "  \"username\": \"admin\",\n" +
                 "  \"password\": \"password123\"\n" +
