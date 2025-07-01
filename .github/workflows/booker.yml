@@ -1,4 +1,4 @@
-name: Run BookingIntegrationTest Main Class
+name: Run BookingIntegrationTest and Email on Success
 
 on:
   push:
@@ -20,3 +20,25 @@ jobs:
 
       - name: Run BookingIntegrationTest.java
         run: mvn compile exec:java
+
+      - name: Send Email on Success
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: GitHub Actions Build Success 🚀
+          to: ${{ secrets.EMAIL_RECEIVER }}
+          from: ${{ secrets.EMAIL_USERNAME }}
+          secure: true
+          body: |
+            ✅ CI Pipeline Success for BookingIntegrationTest.java
+            
+            Triggered by: Push to main branch
+            Status: SUCCESS
+            Repository: ${{ github.repository }}
+            Workflow: ${{ github.workflow }}
+            Job: ${{ github.job }}
+            Run ID: ${{ github.run_id }}
