@@ -80,5 +80,7 @@ public class BookingIntegrationTest {
 
         System.out.println("🔍 Get After Delete Status: " + getAfterDelete.getStatusCode());
         System.out.println("Get After Delete Response: " + getAfterDelete.asString());
+
+        // Updated code
     }
 }
